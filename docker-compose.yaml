@@ -1,0 +1,31 @@
+version: "3.7"
+services:
+    node1:
+        image: mysql/mysql-server:8.0
+        container_name: node1
+        hostname: node1
+        ports:
+            - "3307:3306"
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: teste
+            MYSQL_USER: teste
+            MYSQL_PASSWORD: teste
+            MYSQL_ROOT_PASSWORD: teste 
+        volumes:
+            - "./dump:/docker-entrypoint-initdb.d"
+            - persistent:/var/lib/mysql
+
+    pma1:
+        image: phpmyadmin/phpmyadmin
+        links: 
+            - node1:db
+        ports:
+            - 8081:80
+        environment:
+            MYSQL_USER: user
+            MYSQL_PASSWORD: teste
+            MYSQL_ROOT_PASSWORD: senhaImc 
+    
+volumes:
+    persistent: 
