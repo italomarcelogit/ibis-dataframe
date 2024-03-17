@@ -8,3 +8,7 @@
   * crie um ambiente virtual (python -m venv venv)
   * abra o notebook handson.ipynb e conecte-o ao seu ambiente virtual
   * divirta-se
+
+**Importante**
+
+As palavras chaves no docker-compose.yml estão somente para teste, portanto, utilize secrets e senhas fortes para ambiente públicos.
